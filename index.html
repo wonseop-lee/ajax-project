@@ -11,42 +11,61 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header class="container">
-    <div class="header-container">
+  <header class="bar">
+    <div class="container header-container">
       <h1>Vehicle Profiler</h1>
     </div>
   </header>
   <main class="container">
-    <div data-view="profiles">
+    <div data-view="profiles" class="hidden">
       <div class="header-container page-title">
         <h2>Profiles</h2>
       </div>
-      <form action="">
-        <div class="profiles">
-          <div class="entry">
-            <input type="radio" id="entry1" name="profile">
-            <label for="entry1">2019 BMW X1 12345</label>
+        <form action="" id="view-form">
+          <div class="profiles">
+            <div class="entry">
+              <input type="radio" id="entry1" name="profile">
+              <label for="entry1">2019 BMW X1 12345</label>
+            </div>
+            <div class="entry">
+              <input type="radio" id="entry2" name="profile">
+              <label for="entry2">2016 Honda Civic 54321</label>
+            </div>
+            <div class="entry">
+              <input type="radio" id="entry3" name="profile">
+              <label for="entry2">2021 Tesla Model 3 98765</label>
+            </div>
           </div>
-          <div class="entry">
-            <input type="radio" id="entry2" name="profile">
-            <label for="entry2">2016 Honda Civic 54321</label>
-          </div>
-          <div class="entry">
-            <input type="radio" id="entry3" name="profile">
-            <label for="entry2">2021 Tesla Model 3 98765</label>
-          </div>
-        </div>
           <div class="btn-container">
-            <button class="view-btn wide-btn">View Profile</button>
+            <button class="wide-btn row">VIEW PROFILE</button>
           </div>
-      </form>
-      <div class="btn-container">
-        <button class="add-btn wide-btn">Add Profile</button>
-      </div>
+        </form>
+        <div class="btn-container">
+          <button class="wide-btn row" id="add-prof-btn">ADD PROFILE</button>
+        </div>
     </div>
     <div data-view="add">
-      <div>
-
+      <div class="header-container page-title">
+        <h2>New Profile</h2>
+      </div>
+      <form action="" id="add-form">
+        <div class="row img-container">
+          <img src="" alt="profile image">
+        </div>
+        <div class="entry">
+          <label for="add-image">Photo</label>
+          <input type="url" id="add-image" name="image" class="row input-height">
+        </div>
+        <div class="entry">
+          <label for="add-vin">VIN</label>
+          <input type="text" id="add-vin" name="vin" class="row input-height">
+        </div>
+        <div class="btn-container">
+          <button class="wide-btn row">SUBMIT</button>
+        </div>
+      </form>
+      <div class="btn-container">
+        <button class="wide-btn row off-color" id="cancel-btn">CANCEL</button>
       </div>
     </div>
   </main>
