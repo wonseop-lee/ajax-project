@@ -2,7 +2,7 @@ const $viewForm = document.querySelector('#view-form');
 const $addProfileBtn = document.querySelector('#add-prof-btn');
 
 const $addForm = document.querySelector('#add-form');
-const $img = document.querySelector('img');
+const $addProfileImg = document.querySelector('#add-prof-img');
 const $addImageUrl = document.querySelector('#add-image-url');
 const $addVinInput = document.querySelector('#add-vin-input');
 const $addYearInput = document.querySelector('#add-year-input');
@@ -11,6 +11,12 @@ const $addCancelBtn = document.querySelector('#add-cancel-btn');
 const $views = document.querySelectorAll('main > div');
 
 const $profiles = document.querySelector('.profiles');
+
+const $editProfileBtn = document.querySelector('#edit-profile-btn');
+const $backMainBtn = document.querySelector('#back-main-btn');
+
+const $viewProfileImg = document.querySelector('#view-prof-img');
+const $viewProfileDetail = document.querySelector('#view-profile-detail');
 
 function swapView(dataView) {
   for (let i = 0; i < $views.length; i++) {
@@ -22,15 +28,64 @@ function swapView(dataView) {
   }
 };
 
+function renderProfile(id) {
+  $viewProfileDetail.innerHTML = "";
+  let $vin = document.createElement('h4');
+  let $year = document.createElement('h4');
+  let $make = document.createElement('h4');
+  let $model = document.createElement('h4');
+  let $displacement = document.createElement('h4');
+  let $hp = document.createElement('h4');
+  let $factory = document.createElement('h4');
+
+  $vin.textContent = data[id].vin;
+  $year.textContent = data[id].year;
+  $make.textContent = data[id].make;
+  $model.textContent = data[id].model;
+  $displacement.textContent = data[id].$displacement;
+  $factory.textContent = data[id].$factory;
+
+  $viewProfileDetail.append($vin, $year, $make, $model, $displacement, $hp, $factory);
+};
+
+// profiles
 $viewForm.addEventListener('submit', function (e) {
   e.preventDefault();
-  console.log('This function will swap view to profile view in issue 3');
+  let viewFormData = new FormData($viewForm);
+  let entryToView = viewFormData.get('profile');
+  renderProfile(entryToView);
+  swapView('view');
 });
 
 $addProfileBtn.addEventListener('click', function (e) {
   swapView('add');
 });
 
+for (let i = 0; i < data.length; i++) {
+  let $entryDiv = document.createElement('div');
+  let $input = document.createElement('input');
+  let $label = document.createElement('label');
+
+  $entryDiv.setAttribute('class', 'entry');
+
+  $input.setAttribute('type', 'radio');
+  $input.setAttribute('id', 'entry' + i);
+  $input.setAttribute('name', 'profile');
+  $input.setAttribute('value', i);
+
+  if (i === 0) {
+    $input.setAttribute('checked', "");
+  };
+
+  $label.setAttribute('for', 'entry' + i);
+  $label.textContent = data[i].year + ' ' + data[i].make + ' ' + data[i].model
+                     + ' ' + data[i].vin;
+
+  $entryDiv.append($input, $label);
+  $profiles.append($entryDiv);
+}
+
+// add
 $addForm.addEventListener('submit', function(e) {
   e.preventDefault();
   getVehicleInfo($addVinInput.value, $addYearInput.value);
@@ -42,24 +97,17 @@ $addCancelBtn.addEventListener('click', function(e) {
 });
 
 $addImageUrl.addEventListener('input', function(e) {
-  $img.setAttribute('src', $addImageUrl.value);
+  $addProfileImg.setAttribute('src', $addImageUrl.value);
 });
 
-for (let i = 0; i < data.length; i++) {
-  let $entryDiv = document.createElement('div');
-  let $input = document.createElement('input');
-  let $label = document.createElement('label');
+// view
+$editProfileBtn.addEventListener('click', function(e) {
+  swapView('edit');
+});
 
-  $entryDiv.setAttribute('class', 'entry');
-  $input.setAttribute('type', 'radio');
-  $input.setAttribute('id', 'entry' + i);
-  $input.setAttribute('name', 'profile');
-  $label.setAttribute('for', 'entry' + i);
-  $label.textContent = data[i].year + ' ' + data[i].make + ' ' + data[i].model  + ' ' + data[i].vin;
-
-  $entryDiv.append($input, $label);
-  $profiles.append($entryDiv);
-}
+$backMainBtn.addEventListener('click', function(e) {
+  swapView('profiles');
+});
 
 // WBXHU7C50K3H44275
 // https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSb096ibPU3KBSeNWHnDujBzWakpj5O9hlXdrYbpwgh2_qaqUjQ
