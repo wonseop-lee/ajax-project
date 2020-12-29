@@ -2,18 +2,53 @@
   display: none !important;
 }
 
+h1,
+h2 {
+  margin: 0;
+}
+
 .container {
   max-width: 575px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0.5rem 1.5rem;
+}
+
+.header-container {
+  margin-bottom: 0.5rem;
+}
+
+.btn-container {
+  margin-top: 1rem;
 }
 
 .row {
   width: 100%;
 }
 
+.input-height {
+  height: 2.5rem;
+  margin: 0.5rem 0;
+}
+
+.profiles {
+  padding: 1rem;
+}
+
+img {
+  width: 100%;
+}
+
 @media screen and (min-width: 768px) {
   .container {
     max-width: 900px;
+    padding: 0.5rem 2rem;
+  }
+
+  img {
+    width: 70%;
+  }
+
+  .row {
+    width: 600px;
   }
 }
