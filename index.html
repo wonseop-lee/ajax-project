@@ -23,18 +23,6 @@
       </div>
       <form action="" id="view-form">
         <div class="profiles">
-          <div class="entry">
-            <input type="radio" id="entry1" name="profile">
-            <label for="entry1">2019 BMW X1 12345</label>
-          </div>
-          <div class="entry">
-            <input type="radio" id="entry2" name="profile">
-            <label for="entry2">2016 Honda Civic 54321</label>
-          </div>
-          <div class="entry">
-            <input type="radio" id="entry3" name="profile">
-            <label for="entry2">2021 Tesla Model 3 98765</label>
-          </div>
         </div>
         <div class="btn-container">
           <button class="wide-btn row" id="view-prof-btn">VIEW PROFILE</button>
@@ -53,12 +41,16 @@
           <img src="https://picsum.photos/300/200" alt="profile image">
         </div>
         <div class="entry">
-          <label for="add-image">Photo</label>
-          <input type="url" id="add-image-url" name="image" class="row input-height">
+          <label for="add-image-url">Profile Photo</label>
+          <input type="url" id="add-image-url" name="image" class="row input-height" placeholder="URL of image address">
         </div>
         <div class="entry">
-          <label for="add-vin">VIN</label>
-          <input type="text" id="add-vin-input" name="vin" class="row input-height">
+          <label for="add-vin-input">VIN</label>
+          <input required type="text" id="add-vin-input" name="vin" class="row input-height" maxlength="17" placeholder="Vehicle Identification Number">
+        </div>
+        <div class="entry">
+          <label for="add-year-input">Year</label>
+          <input required type="number" id="add-year-input" name="year" class="row input-height" min="1900" max="2021" placeholder="2020">
         </div>
         <div class="btn-container">
           <button class="wide-btn row">SUBMIT</button>
@@ -67,6 +59,31 @@
       <div class="btn-container">
         <button class="wide-btn row off-color" id="add-cancel-btn">CANCEL</button>
       </div>
+    </div>
+    <div data-view="view" class="hidden">
+      <div class="header-container page-title">
+        <h2></h2>
+      </div>
+      <section>
+        <div class="row img-container">
+          <img src="" alt="profile image">
+        </div>
+        <div class="row">
+          <h4>1</h4>
+          <h4>2</h4>
+          <h4>3</h4>
+          <h4>4</h4>
+          <h4>5</h4>
+          <h4>6</h4>
+          <h4>7</h4>
+        </div>
+        <div class="btn-container">
+          <button class="wide-btn row">EDIT PROFILE</button>
+        </div>
+        <div class="btn-container">
+          <button class="wide-btn row">BACK TO MAIN MENU</button>
+        </div>
+      </section>
     </div>
   </main>
   <script src="js/data.js"></script>
