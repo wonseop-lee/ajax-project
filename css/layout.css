@@ -3,7 +3,8 @@
 }
 
 h1,
-h2 {
+h2,
+h4 {
   margin: 0;
 }
 
@@ -33,6 +34,11 @@ h2 {
 
 .profiles {
   padding: 1rem;
+  height: 400px;
+}
+
+.margin-bottom {
+  margin-bottom: 2rem;
 }
 
 img {

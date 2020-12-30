@@ -17,6 +17,7 @@ const $backMainBtn = document.querySelector('#back-main-btn');
 
 const $viewProfileImg = document.querySelector('#view-prof-img');
 const $viewProfileDetail = document.querySelector('#view-profile-detail');
+const $viewHeader = document.querySelector('#view-header');
 
 function swapView(dataView) {
   for (let i = 0; i < $views.length; i++) {
@@ -29,7 +30,10 @@ function swapView(dataView) {
 };
 
 function renderProfile(id) {
+
+  $viewProfileImg.setAttribute('src', data[id].photo);
   $viewProfileDetail.innerHTML = "";
+
   let $vin = document.createElement('h4');
   let $year = document.createElement('h4');
   let $make = document.createElement('h4');
@@ -38,14 +42,19 @@ function renderProfile(id) {
   let $hp = document.createElement('h4');
   let $factory = document.createElement('h4');
 
-  $vin.textContent = data[id].vin;
-  $year.textContent = data[id].year;
-  $make.textContent = data[id].make;
-  $model.textContent = data[id].model;
-  $displacement.textContent = data[id].$displacement;
-  $factory.textContent = data[id].$factory;
+  $vin.textContent = 'VIN: ' + data[id].vin;
+  $year.textContent = 'Year: ' + data[id].year;
+  $make.textContent = 'Make: ' + data[id].make;
+  $model.textContent = 'Model: ' + data[id].model;
+  let dispDecimal = data[id].displacement.split('.');
+  $displacement.textContent = 'Displacement: ' + dispDecimal[0] + ' cc';
+  $hp.textContent = 'Horsepower: ' + data[id].hp + ' hp';
+  $factory.textContent = 'Factory: ' + data[id].factory;
 
   $viewProfileDetail.append($vin, $year, $make, $model, $displacement, $hp, $factory);
+
+  $viewHeader.textContent = data[id].year + ' ' + data[id].make + ' ' + data[id].model;
+
 };
 
 // profiles

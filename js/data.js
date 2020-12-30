@@ -6,7 +6,6 @@ var xhr = new XMLHttpRequest();
 var apiLink = '';
 var obj = {};
 
-
 function getVehicleInfo(vin, year) {
   apiLink = 'https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVin/' + vin
           + '?format=json&modelyear=' + year;
@@ -28,27 +27,21 @@ function getVehicleInfo(vin, year) {
       if (result.Results[i].VariableId === 26) {
         obj.make = result.Results[i].Value;
       };
-
       if (result.Results[i].VariableId === 28) {
         obj.model = result.Results[i].Value;
       };
-
       if (result.Results[i].VariableId === 11) {
         obj.displacement = result.Results[i].Value;
       };
-
       if (result.Results[i].VariableId === 71) {
         obj.hp = result.Results[i].Value;
       };
-
       if (result.Results[i].VariableId === 31) {
         city = result.Results[i].Value;
       };
-
       if (result.Results[i].VariableId === 77 && result.Results[i].Value !== null) {
         state = (', ' + result.Results[i].Value);
       };
-
       if (result.Results[i].VariableId === 75) {
         country = (', ' + result.Results[i].Value);
       };

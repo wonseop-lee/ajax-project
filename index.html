@@ -24,7 +24,7 @@
         <h2>Profiles</h2>
       </div>
       <form action="" id="view-form">
-        <div class="profiles">
+        <div class="profiles margin-bottom">
         </div>
         <div class="btn-container">
           <button class="wide-btn row" id="view-prof-btn">VIEW PROFILE</button>
@@ -66,14 +66,13 @@
     </div>
     <div data-view="view" class="hidden">
       <div class="header-container page-title">
-        <h2>test</h2>
+        <h2 id="view-header"></h2>
       </div>
       <section>
         <div class="row img-container">
           <img src="" alt="profile image" id="view-prof-img">
         </div>
-        <div class="row" id="view-profile-detail">
-          <!-- <h4>1</h4> -->
+        <div class="row margin-bottom" id="view-profile-detail">
         </div>
         <div class="btn-container">
           <button class="wide-btn row" id="edit-profile-btn">EDIT PROFILE</button>
@@ -82,6 +81,36 @@
           <button class="wide-btn row" id="back-main-btn">BACK TO MAIN MENU</button>
         </div>
       </section>
+    </div>
+    <div data-view="edit" class="hidden">
+      <div class="header-container page-title">
+        <h2>New Profile</h2>
+      </div>
+      <form action="" id="edit-form">
+        <div class="row img-container">
+          <img src="" alt="profile image" id="edit-prof-img">
+        </div>
+        <div class="entry">
+          <label for="edit-image-url">Profile Photo</label>
+          <input type="url" id="edit-image-url" name="image" class="row input-height" placeholder="URL of image address">
+        </div>
+        <div class="entry">
+          <label for="edit-vin-input">VIN</label>
+          <input required type="text" id="edit-vin-input" name="vin" class="row input-height" maxlength="17"
+            placeholder="Vehicle Identification Number">
+        </div>
+        <div class="entry">
+          <label for="edit-year-input">Year</label>
+          <input required type="number" id="edit-year-input" name="year" class="row input-height" min="1900" max="2021"
+            placeholder="2020">
+        </div>
+        <div class="btn-container">
+          <button class="wide-btn row" type="submit">SUBMIT</button>
+        </div>
+      </form>
+      <div class="btn-container">
+        <button class="wide-btn row off-color" id="edit-cancel-btn">CANCEL</button>
+      </div>
     </div>
   </main>
   <script src="js/data.js"></script>
