@@ -102,9 +102,6 @@ $addProfileBtn.addEventListener('click', function (e) {
 $addForm.addEventListener('submit', function (e) {
   e.preventDefault();
   getVehicleInfo($addVinInput.value, $addYearInput.value);
-
-
-  //
   swapView('view');
 });
 

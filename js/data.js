@@ -1,7 +1,6 @@
 /* exported data */
 
 var data = [];
-
 var xhr = new XMLHttpRequest();
 var apiLink = '';
 var obj = {};
