@@ -11,12 +11,11 @@ function getVehicleInfo(vin, year) {
           + '?format=json&modelyear=' + year;
   xhr.open('GET', apiLink);
   xhr.responseType = 'json';
-
+  xhr.send();
   xhr.addEventListener('load', function () {
     let city = '';
     let state = '';
     let country = '';
-
     let result = xhr.response;
     // console.log('response:', result);
     obj.vin = vin;
@@ -48,14 +47,15 @@ function getVehicleInfo(vin, year) {
     };
     obj.factory = city + state + country;
     data.push(obj);
+    saveToStorage();
+    renderProfile(data.length - 1);
   });
-  xhr.send();
 };
 
-window.addEventListener('beforeunload', function(e) {
+function saveToStorage() {
   var dataJSON = JSON.stringify(data);
   localStorage.setItem('vehicle-data', dataJSON);
-});
+};
 
 var previousProfileData = localStorage.getItem('vehicle-data');
 if (previousProfileData !== null) {
