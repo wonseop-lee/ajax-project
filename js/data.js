@@ -1,9 +1,9 @@
 /* exported data */
 
-var data = [];
-var xhr = new XMLHttpRequest();
-var apiLink = '';
-var obj = {};
+const data = [];
+const xhr = new XMLHttpRequest();
+const apiLink = '';
+const obj = {};
 
 function getVehicleInfo(vin, year) {
   apiLink = 'https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVin/' + vin
@@ -12,11 +12,8 @@ function getVehicleInfo(vin, year) {
   xhr.responseType = 'json';
   xhr.send();
   xhr.addEventListener('load', function () {
-    let city = '';
-    let state = '';
-    let country = '';
+    let city = '', state = '', country = '';
     let result = xhr.response;
-    // console.log('response:', result);
     obj.vin = vin;
     obj.year = year;
     obj.photo = $addImageUrl.value;

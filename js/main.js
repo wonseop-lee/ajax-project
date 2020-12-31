@@ -1,5 +1,9 @@
 const $viewForm = document.querySelector('#view-form');
 const $addProfileBtn = document.querySelector('#add-prof-btn');
+const $views = document.querySelectorAll('main > div');
+const $profiles = document.querySelector('.profiles');
+const $editProfileBtn = document.querySelector('#edit-profile-btn');
+const $backMainBtn = document.querySelector('#back-main-btn');
 
 const $addForm = document.querySelector('#add-form');
 const $addProfileImg = document.querySelector('#add-prof-img');
@@ -8,12 +12,6 @@ const $addVinInput = document.querySelector('#add-vin-input');
 const $addYearInput = document.querySelector('#add-year-input');
 const $addCancelBtn = document.querySelector('#add-cancel-btn');
 
-const $views = document.querySelectorAll('main > div');
-
-const $profiles = document.querySelector('.profiles');
-
-const $editProfileBtn = document.querySelector('#edit-profile-btn');
-const $backMainBtn = document.querySelector('#back-main-btn');
 
 const $viewProfileImg = document.querySelector('#view-prof-img');
 const $viewProfileDetail = document.querySelector('#view-profile-detail');
@@ -30,7 +28,6 @@ function swapView(dataView) {
 };
 
 function renderProfile(id) {
-
   $viewProfileImg.setAttribute('src', data[id].photo);
   $viewProfileDetail.innerHTML = "";
 
