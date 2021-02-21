@@ -1,21 +1,31 @@
-const $viewForm = document.querySelector('#view-form');
-const $addProfileBtn = document.querySelector('#add-prof-btn');
+// selects all pages
 const $views = document.querySelectorAll('main > div');
+// profiles page
+const $viewForm = document.querySelector('#view-form');
 const $profiles = document.querySelector('.profiles');
+const $addProfileBtn = document.querySelector('#add-prof-btn');
+// view profile page
+const $viewHeader = document.querySelector('#view-header');
+const $viewProfileImg = document.querySelector('#view-prof-img');
+const $viewProfileDetail = document.querySelector('#view-profile-detail');
 const $editProfileBtn = document.querySelector('#edit-profile-btn');
 const $backMainBtn = document.querySelector('#back-main-btn');
-
+// add profile page
 const $addForm = document.querySelector('#add-form');
 const $addProfileImg = document.querySelector('#add-prof-img');
 const $addImageUrl = document.querySelector('#add-image-url');
 const $addVinInput = document.querySelector('#add-vin-input');
 const $addYearInput = document.querySelector('#add-year-input');
 const $addCancelBtn = document.querySelector('#add-cancel-btn');
-
-
-const $viewProfileImg = document.querySelector('#view-prof-img');
-const $viewProfileDetail = document.querySelector('#view-profile-detail');
-const $viewHeader = document.querySelector('#view-header');
+// add submit btn?
+// edit profile page
+const $editForm = document.querySelector('#edit-form');
+const $editProfileImg = document.querySelector('#edit-prof-img');
+const $editImageUrl = document.querySelector('#edit-image-url');
+const $editVinInput = document.querySelector('#edit-vin-input');
+const $editYearInput = document.querySelector('#edit-year-input');
+const $editDeleteBtn = document.querySelector('#edit-delete-btn');
+const $editCancelBtn = document.querySelector('#edit-cancel-btn');
 
 function swapView(dataView) {
   for (let i = 0; i < $views.length; i++) {
@@ -52,7 +62,7 @@ function renderProfile(id) {
 
   $viewHeader.textContent = data[id].year + ' ' + data[id].make + ' ' + data[id].model;
 };
-
+// renders list of profiles
 function renderList() {
   $profiles.innerHTML = "";
   for (let i = 0; i < data.length; i++) {
@@ -66,7 +76,7 @@ function renderList() {
     $input.setAttribute('id', 'entry' + i);
     $input.setAttribute('name', 'profile');
     $input.setAttribute('value', i);
-
+    // default check on the first radio button on the list
     if (i === 0) {
       $input.setAttribute('checked', "");
     };
@@ -79,10 +89,10 @@ function renderList() {
     $profiles.append($entryDiv);
   };
 };
-
-// profiles
+// entry point
+// render list of profiles as DOM gets loaded
 window.addEventListener('DOMContentLoaded', renderList());
-
+// profiles
 $viewForm.addEventListener('submit', function (e) {
   e.preventDefault();
   let viewFormData = new FormData($viewForm);
@@ -90,7 +100,6 @@ $viewForm.addEventListener('submit', function (e) {
   renderProfile(entryToView);
   swapView('view');
 });
-
 $addProfileBtn.addEventListener('click', function (e) {
   swapView('add');
 });
@@ -98,39 +107,38 @@ $addProfileBtn.addEventListener('click', function (e) {
 // add
 $addForm.addEventListener('submit', function (e) {
   e.preventDefault();
-  getVehicleInfo($addVinInput.value, $addYearInput.value);
+  // request info on the vehicle from api
+  addInfo($addVinInput.value, $addYearInput.value);
   swapView('view');
 });
-
-$addCancelBtn.addEventListener('click', function (e) {
-  swapView('profiles');
-});
-
 $addImageUrl.addEventListener('input', function (e) {
   $addProfileImg.setAttribute('src', $addImageUrl.value);
+});
+$addCancelBtn.addEventListener('click', function (e) {
+  swapView('profiles');
 });
 
 // view
 $editProfileBtn.addEventListener('click', function (e) {
   swapView('edit');
 });
-
 $backMainBtn.addEventListener('click', function (e) {
   renderList();
   swapView('profiles');
 });
 
 // edit
-// issue 4
-
-// delete
-// issue 5
-
-// WBXHU7C50K3H44275
-// https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSb096ibPU3KBSeNWHnDujBzWakpj5O9hlXdrYbpwgh2_qaqUjQ
-
-// 19XFC2F50GE234074
-// https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS0ffAuLvtMqmlj8s7UiroOuJYAoC-zj_5fG_1kBNSkwPpPUD5c
-
-// WBS2U7C02M7H08082
-// https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQW8CEr0ek6HSuMpVJeNnWBDW_BtAdwCBw2KkIsZj4fjTS0xwhW
+$editForm.addEventListener('submit', function (e) {
+  e.preventDefault();
+  updateProfile($editVinInput.value, $editYearInput.value);
+  swapView('view');
+});
+$editImageUrl.addEventListener('input', function (e) {
+  $editProfileImg.setAttribute('src', $editImageUrl.value);
+});
+$editCancelBtn.addEventListener('click', function (e) {
+  swapView('view');
+});
+$editDeleteBtn.addEventListener('click', function (e) {
+  console.log('deleted');
+})
